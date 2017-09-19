@@ -1,5 +1,8 @@
+{% extends 'blog/base.html' %}
+
+<!--<html>
 {% load staticfiles %}
-<html>
+
       <head>
           <title>Django blogss</title>
 
@@ -16,13 +19,34 @@
           <h1><a href="/">Django Blog</a></h1>
         </div>
 
-        
-      {% for p in pub %}
-      <div class="post">
-          <p>Publicacion:{{ p.fecha_publicacion }}</p>
-          <h1><a href="">{{ p.titulo }}</a></h1>
-          <p>{{ p.texto|linebreaksbr }}</p>
+
+
+      <div class="content container">
+        <div class="row">
+          <div class="col-md-8">
+            {% for p in pub %}
+              <div class="post">
+                <p>Publicacion:{{ p.fecha_publicacion }}</p>
+                <h1><a href="">{{ p.titulo }}</a></h1>
+                <p>{{ p.texto|linebreaksbr }}</p>
+              </div>
+            {% endfor %}
+          </div>
         </div>
-        {% endfor %}
+      </div>
+    -->
+{% block content %}
+    {% for p in pub %}
+      <div class="post">
+        <p>Publicacion:{{ p.fecha_publicacion }}</p>
+        <h1><a href="{% url 'postear' pk=p.pk %}">{{ p.titulo }}</a></h1>
+        <!--"postea"-->
+        <p>{{ p.texto|linebreaksbr }}</p>
+      </div>
+    {% endfor %}
+{% endblock content %}
+
+<!--
     </body>
 </html>
+-->

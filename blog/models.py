@@ -9,8 +9,10 @@ class Publicacion(models.Model):
             default=timezone.now)
     fecha_publicacion = models.DateTimeField(
             blank=True, null=True)
-    def publish(self):
+
+    def publicar(self):
         self.fecha_publicacion = timezone.now()
         self.save()
+
     def __str__(self):
         return self.titulo
